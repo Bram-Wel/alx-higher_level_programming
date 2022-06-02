@@ -19,4 +19,4 @@ elif last_digit == 0:
     str1 = f"0"
 else:
     str1 = f"less than 6 and not 0"
-print(str0 + str1)
+print("{}".format(str0 + str1))
