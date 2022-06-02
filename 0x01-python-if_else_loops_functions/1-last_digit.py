@@ -12,6 +12,8 @@ def abs_no(n):
 
 num = abs_no(number)
 last_digit = num % 10
+if number < 0:
+    number = -number
 str0 = f"Last digit of {number} is {last_digit} and is "
 if last_digit > 5:
     str1 = f"greater than 5"
