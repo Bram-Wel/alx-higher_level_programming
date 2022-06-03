@@ -7,7 +7,8 @@ def fib(n):    # Write the Fibonacci Sequence up to n.
         a, b = b, a+b
     print()
 
-def fib2(n): # Return Fibonacci sequence upto n.
+
+def fib2(n):  # Return Fibonacci sequence upto n.
     result = []
     a, b = 0, 1
     while a < n:
