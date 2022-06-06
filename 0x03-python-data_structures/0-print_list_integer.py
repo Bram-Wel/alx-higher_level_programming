@@ -8,8 +8,5 @@ def print_list_integer(my_list=[]):
     """
 
     for i in my_list:
-        if type(i).__name__ == "int":
+        if type(i) == int:
             print("{:d}".format(i))
-
-if __name__ == "__main__":
-    print_list_integer(my_list)
