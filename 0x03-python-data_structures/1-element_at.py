@@ -14,6 +14,3 @@ def element_at(my_list, idx):
         return
 
     return (my_list[idx])
-
-if __name__ == "__main__":
-    element_at(my_list, idx)
