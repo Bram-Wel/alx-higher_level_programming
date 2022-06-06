@@ -7,7 +7,8 @@ def print_reversed_list_integer(my_list=[]):
         my_list: List to iterate through
     """
 
-    for i in reversed(my_list):
-        """if type(i).__name__ == "int":
-        """
-        print("{:d}".format(i))
+    if my_list:
+        for i in reversed(my_list):
+            """if type(i).__name__ == "int":
+            """
+            print("{:d}".format(i))
