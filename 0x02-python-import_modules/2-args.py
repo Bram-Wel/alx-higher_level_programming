@@ -4,6 +4,7 @@ import sys
 
 length = len(sys.argv)
 
+
 def print_args(length):
     """Prints No. of arguments & lists them
 
@@ -19,6 +20,7 @@ def print_args(length):
             if sys.argv[i] == sys.argv[0]:
                 continue
             print(f"{i}: {sys.argv[i]}")
+
 
 if __name__ == "__main__":
     print_args(length)
