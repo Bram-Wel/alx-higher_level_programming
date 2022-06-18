@@ -12,7 +12,12 @@ def calculate():
         print(f"Usage: {sys.argv[0]} <a> <operator> <b>")
         sys.exit(1)
     elif sys.argv[2] not in "+-*/":
-        print(f"Unknown Operator. Available operators: +, -, * and /")
+        lower = "abcdefghigklmnopqrstuvwxyz"
+        upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        if sys.argv[2] not in lower and sys.argv[2] not in upper:
+            print(f"Unknown Operator. Available operators: +, -, * and /")
+        else:
+            print(f"Unknown Operator. Only: +, -, * and / available")
         exit(1)
     elif sys.argv[2] == '+':
         print(f"{sys.argv[1]} + {sys.argv[3]} = ", end="")
