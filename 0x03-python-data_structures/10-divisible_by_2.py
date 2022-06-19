@@ -13,5 +13,6 @@ def divisible_by_2(my_list=[]):
 
     return [True if i % 2 == 0 else False for i in my_list]
 
+
 if __name__ == "__main__":
     divisible_by_2(my_list=[])
