@@ -8,7 +8,8 @@ def list_division(my_list_1, my_list_2, list_length):
             @my_list_2: The second list.
             @list_length: length of list to be returned.
         Returns:
-            The return value. A new list(length = list_length) with all divisions
+            The return value. A new list(length = list_length) with
+            all divisions
     """
 
     result = []
