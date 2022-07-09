@@ -12,7 +12,9 @@ def safe_print_list(my_list=[], x=0):
     try:
         for el in range(x):
             print(my_list[el], end="")
-        return (el + 1)
+        if (x > 0):
+            el += 1
+        return (el)
     except IndexError:
         return (el)
     finally:
