@@ -1,0 +1,56 @@
+===================
+3-say_my_name usage
+===================
+
+The module describes a function ```say_my_name(first_name, last_name="")```
+
+++++++
+Usage:
+++++++
+
+```say_my_name(first_name, last_name="")``` prints the string
+	'My name is <first name> <last name>'
+
+::
+Import
+	>>> say_my_name = __import__('3-say_my_name').say_my_name
+	>>> say_my_name("Bram", "Wel")
+	My name is Bram Wel
+
+::
+module_docstring
+	>>> mod = __import__('3-say_my_name').__doc__
+	>>> len(mod) > 1
+	True
+
+::
+fxn_docstring
+	>>> fun = say_my_name.__doc__
+	>>> len(fun) > 1
+	True
+
+::
+Null(None) 1st name value
+	>>> say_my_name(None, "Hello")
+	Traceback (most recent call last):
+	...
+	TypeError: first_name must be a string
+
+::
+Null(None) 2nd name value
+	>>> say_my_name("Bob", None)
+	Traceback (most recent call last):
+	...
+	TypeError: last_name must be a string
+
+::
+Default last_name
+	>>> say_my_name("Bob")
+	My name is Bob 
+
+::
+More arguments than required
+	>>> say_my_name("Bob", "Hearts", "Abisholla")
+	Traceback (most recent call last):
+	...
+	TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given
