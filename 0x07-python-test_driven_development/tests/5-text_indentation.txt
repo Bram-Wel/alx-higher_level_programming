@@ -16,19 +16,20 @@ Importing
 ::
 No spaces begin a line
 	>>> text_indentation("   Bamuda.")
-	Bamuda.
+	   Bamuda.
 	<BLANKLINE>
 
 ::
 No spaces at the end of a printed line
 	>>> text_indentation("         ")
+	<BLANKLINE>
 
 ::
 New line for ```.```, ```?```, ```:``` only.
 	>>> text_indentation("  Wow.   It's a messy one.  ")
-	Wow.
+	  Wow.
 	<BLANKLINE>
-	It's a messy one.
+	  It's a messy one.
 	<BLANKLINE>
 
 ::
