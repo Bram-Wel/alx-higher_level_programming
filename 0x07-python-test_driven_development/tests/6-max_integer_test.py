@@ -70,6 +70,18 @@ class TestMaxInteger(unittest.TestCase):
         new_list = [1, 100, 102, 165, 216, 93, 21]
         self.assertEqual(max_integer(new_list), 216)
 
+    def test_max_ending(self):
+        """Tests for a max at the end of the list
+        """
+        new_list = [80, 76, -5, 12, 91]
+        self.assertEqual(max_integer(new_list), 91)
+
+    def test_max_begin(self):
+        """Tests for max value at the beginning of a list
+        """
+        new_list = [17, 8, 15, 1]
+        self.assertEqual(max_integer(new_list), 17)
+
 
 if __name__ == 'main':
     unittest.main(verbosity=2)
