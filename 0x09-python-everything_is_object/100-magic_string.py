@@ -2,8 +2,8 @@
 """A function definition"""
 
 
-def magic_string(string=[]):
+def magic_string():
     """Returns a magic string
     """
-    string.append("Best School")
-    return ", ".join(string)
+    magic_string.n = getattr(magic_string, 'n', 0) + 1
+    return ("BestSchool, " * (magic_string.n - 1) + "BestSchool")
