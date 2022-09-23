@@ -20,11 +20,13 @@ def init_board(n):
     [row.append(' ') for i in range(n) for row in board]
     return board
 
+
 def board_deepcopy(board):
     """Copy a chessboard"""
     if isinstance(board, list):
         return list(map(board_deepcopy, board))
     return board
+
 
 def get_soln(board):
     """List rep of soved chess board"""
@@ -36,6 +38,7 @@ def get_soln(board):
                 break
     return soln
 
+
 def xout(board, row, col):
     """Crosses x's on a chessboard
 
@@ -44,46 +47,47 @@ def xout(board, row, col):
         row: Last row occupied by queen
         col: Last column occupied by queen
     """
-    #forward spots
+    # forward spots
     for i in range(col + 1, len(board)):
         board[row][i] = 'x'
-    #backward spots
+    # backward spots
     for i in range(col - 1, -1, -1):
         board[row][i] = 'x'
-    #spots below
+    # spots below
     for j in range(row + 1, len(board)):
         board[j][col] = 'x'
-    #spots above
-    for j in range(row -1, -1, -1):
+    # spots above
+    for j in range(row - 1, -1, -1):
         board[j][col] = 'x'
-    #diagonal spots =>down to right
+    # diagonal spots =>down to right
     c = col + 1
     for r in range(row + 1, len(board)):
         if c >= len(board):
             break
         board[r][c] = 'x'
         c += 1
-    #diagonal spots =>up to left
+    # diagonal spots =>up to left
     c = col - 1
     for r in range(row - 1, -1, -1):
         if c < 0:
             break
         board[r][c]
         c -= 1
-    #diagonal spots =>up to right
+    # diagonal spots =>up to right
     c = col + 1
     for r in range(row - 1, -1, -1):
         if c >= len(board):
             break
         board[r][c] = 'x'
         c += 1
-    #diagonal spots =>down to left
+    # diagonal spots =>down to left
     c = col - 1
     for r in range(row + 1, len(board)):
         if c < 0:
             break
         board[r][c] = 'x'
         c -= 1
+
 
 def rec_solve(board, row, queens, solns):
     """Solves n-queens puzzle recursively
@@ -120,7 +124,6 @@ if __name__ == "__main__":
     elif int(sys.argv[1]) < 4:
         print("N must be at least 4")
         sys.exit(1)
-
 
     board = init_board(int(sys.argv[1]))
     solns = rec_solve(board, 0, 0, [])
