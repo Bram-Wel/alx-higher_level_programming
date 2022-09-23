@@ -74,7 +74,7 @@ class Rectangle:
 
     def __del__(self):
         """Cleans up when destroying an instance"""
-        print("Bye Rectangle...")
+        print("Bye rectangle...")
 
     def __str__(self):
         """String representation of the rectangle using #"""
