@@ -1,3 +1,3 @@
 #!/bin/bash
 # Asks for server allowed Http methods
-curl -sL -X "OPTIONS" "$1"
+curl -sLI -X "OPTIONS" "$1" | grep "Allow" | cut -b 8-
