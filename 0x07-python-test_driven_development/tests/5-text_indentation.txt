@@ -1,0 +1,75 @@
+========================
+5-text_indentation usage
+========================
+
+++++++
+Usage:
+++++++
+
+::
+Importing
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+	>>> text_indentation("Print blankline?")
+	Print blankline?
+	<BLANKLINE>
+
+::
+No spaces begin a line
+	>>> text_indentation("   Bamuda.")
+	   Bamuda.
+	<BLANKLINE>
+
+::
+No spaces at the end of a printed line
+	>>> text_indentation("         ")
+	<BLANKLINE>
+
+::
+New line for ```.```, ```?```, ```:``` only.
+	>>> text_indentation("  Wow.   It's a messy one.  ")
+	  Wow.
+	<BLANKLINE>
+	  It's a messy one.
+	<BLANKLINE>
+
+::
+	>>> text_indentation("okay, I messed up up there")
+	okay, I messed up up there
+
+::
+Check for docstring in module
+	>>> len(__import__('5-text_indentation').__doc__) > 1
+	True
+
+::
+Check for function docstrings
+	>>> len(__import__('5-text_indentation').text_indentation.__doc__) > 1
+	True
+
+::
+No arguments
+	>>> text_indentation()
+	Traceback (most recent call last):
+	...
+	TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+::
+More arguments
+	>>> text_indentation("Hello", "there")
+	Traceback (most recent call last):
+	...
+	TypeError: text_indentation() takes 1 positional argument but 2 were given
+
+::
+Passing None
+	>>> text_indentation(None)
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
+
+::
+Other argument types
+	>>> text_indentation(16.00)
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string

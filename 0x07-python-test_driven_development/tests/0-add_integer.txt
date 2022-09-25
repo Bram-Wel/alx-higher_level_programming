@@ -1,0 +1,102 @@
+===================
+0-add_integer usage
+===================
+
+The module defines an addition function for integers ```add_integer(a, b=98)```.
+
+Usage:
+======
+
+```add_integer(a, b)``` returns the sum of 2 integers a & b.
+
+::
+	>>> add_integer = __import__('0-add_integer').add_integer
+	>>> add_integer(7, 9)
+	16
+
+::
+Negative no.s
+	>>> add_integer(2, -5)
+	-3
+
+::
+Floating point no.s
+	>>> add_integer(6.0, 12.0)
+	18
+
+::
+Casting floats to integers
+	>>> add_integer(12.7, 1.3)
+	13
+
+::
+	>>> add_integer(-6.7, -4.2)
+	-10
+
+::
+Combination of floats & integers
+	>>> add_integer(4.1, -3)
+	1
+
+::
+Optional argument b (Defaults 98).
+	>>> add_integer(6)
+	104
+
+======
+Errors
+======
+
+```add_integer(a, b)``` takes only integers & floats
+::
+	>>> add_integer("str", 12)
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+	>>> add_integer(17, "string")
+	Traceback (most recent call last):
+	...
+	TypeError: b must be an integer
+
+	>>> add_integer(None)
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+	>>> add_integer(6, None)
+	Traceback (most recent call last):
+	...
+	TypeError: b must be an integer
+
+TypeError message for a argument if both a&b are not floats/integers
+::
+	>>> add_integer('c', "string")
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+Infinity
+::
+	>>> add_integer(float('inf'))
+	Traceback (most recent call last):
+	...
+	OverflowError: cannot convert float infinity to integer
+
+	>>> add_integer(3, float('inf'))
+	Traceback (most recent call last):
+	...
+	OverflowError: cannot convert float infinity to integer
+
+NaN
+::
+	>>> add_integer(float('nan'))
+	Traceback (most recent call last):
+	...
+	ValueError: cannot convert float NaN to integer
+
+::
+	>>> add_integer(2, float('NaN'))
+	Traceback (most recent call last):
+	...
+	ValueError: cannot convert float NaN to integer
