@@ -2,9 +2,10 @@
 """Fetches and displays value for header X-Request-Id
 from passed url"""
 import sys
-from urllib.request import urlopen
+import urllib.request
 
 
+urlopen = urllib.request.urlopen
 if __name__ == "__main__":
     with urlopen(sys.argv[1]) as resp:
         headers = resp.info()
