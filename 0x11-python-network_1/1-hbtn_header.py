@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""Fetches and displays value for header X-Request-Id
-from passed url"""
+"""Fetches and displays value for header X-Request-Id from passed url"""
 import sys
 import urllib.request
 
