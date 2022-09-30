@@ -4,5 +4,6 @@ import requests
 from sys import argv
 
 if __name__ == "__main__":
-    resp = requests.post(argv[1])
-    print(resp.headers['X-Request-Id'])
+    datum = {'email': argv[2]}
+    resp = requests.post(argv[1], data=datum)
+    print(resp.text)
