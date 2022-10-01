@@ -11,11 +11,11 @@ if __name__ == "__main__":
     resp = requests.post('http://0.0.0.0:5000/search_user', data=datum)
     try:
         body = resp.json()
-        if body == {}:
+        if not body:
             print("No result")
         else:
             print(f"[{body.get('id')}] {body.get('name')}")
-    except json.decoder.JSONDecodeError:
+    except ValueError:
         if resp.status_code == 204:
             print("No result")
         else:
