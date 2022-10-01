@@ -7,7 +7,7 @@ if __name__ == "__main__":
     args = argv[:]
     if len(args) < 2:
         args.append("")
-    datum = {'q': argv[1]}
+    datum = {'q': argc[1]}
     resp = requests.post('http://0.0.0.0:5000/search_user', data=datum)
     try:
         body = resp.json()
