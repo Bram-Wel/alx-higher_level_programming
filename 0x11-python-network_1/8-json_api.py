@@ -15,7 +15,7 @@ if __name__ == "__main__":
             print("No result")
         else:
             print(f"[{body.get('id')}] {body.get('name')}")
-    except requests.exceptions.JSONDecodeError:
+    except json.decoder.JSONDecodeError:
         if resp.status_code == 204:
             print("No result")
         else:
