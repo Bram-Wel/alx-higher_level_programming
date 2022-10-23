@@ -31,6 +31,11 @@ Usage
 	...
 	TypeError: name must be an integer
 
+	>>> BaseG.integer_validator("name", None)
+	Traceback (most recent call last):
+	...
+	TypeError: name must be an integer
+
 	>>> BaseG.integer_validator("name", 0)
 	Traceback (most recent call last):
 	...
@@ -45,3 +50,23 @@ Usage
 	Traceback (most recent call last):
 	...
 	TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+	>>> BaseG.integer_validator("name", 1, 2)
+	Traceback (most recent call last):
+	...
+	TypeError: integer_validator() takes 3 positional arguments but 4 were given
+
+	>>> BaseG.integer_validator("name", (1, 2))
+	Traceback (most recent call last):
+	...
+	TypeError: name must be an integer
+
+	>>> BaseG.integer_validator("age", [3])
+	Traceback (most recent call last):
+	...
+	TypeError: age must be an integer
+
+	>>> BaseG.integer_validator("age", {3, 8})
+	Traceback (most recent call last):
+	...
+	TypeError: age must be an integer
