@@ -1,0 +1,53 @@
+=====================
+``1-my_list`` module
+=====================
+
+++++++++++++++++
+Usage
+++++++++++++++++
+
+:: Importing modules
+	>>> MyList = __import__("1-my_list").MyList
+
+:: Docstrings
+	>>> m = __import__("1-my_list")
+	>>> len(m.__doc__) > 1
+	True
+
+	>>> len(MyList.__doc__) > 1
+	True
+
+	>>> len(MyList.print_sorted.__doc__) > 1
+	True
+
+:: Inheritance
+	>>> issubclass(MyList, list)
+	True
+
+:: Empty List
+	>>> list = MyList()
+	>>> list.print_sorted()
+	[]
+
+:: Inserting to list
+	>>> list.append(2)
+	>>> list.append(3)
+	>>> list.append(4)
+	>>> list.append(1)
+	>>> list.append(5)
+	>>> list
+	[2, 3, 4, 1, 5]
+
+:: Sorting
+	>>> list.print_sorted()
+	[1, 2, 3, 4, 5]
+
+	>>> list.append(-1)
+	>>> list.print_sorted()
+	[-1, 1, 2, 3, 4, 5]
+
+:: No arguments
+	>>> list.print_sorted(3)
+	Traceback (most recent call last):
+	...
+	TypeError: print_sorted() takes 1 positional argument but 2 were given
