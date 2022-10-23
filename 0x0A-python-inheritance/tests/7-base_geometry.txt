@@ -1,0 +1,47 @@
+==========================
+``7-base_geometry`` module
+==========================
+
+++++++++
+Usage
+++++++++
+
+:: Imports
+	>>> BaseG = __import__('7-base_geometry').BaseGeometry()
+
+:: Area
+	>>> BaseG.area()
+	Traceback (most recent call last):
+	...
+	Exception: area() is not implemented
+
+:: Bad Arguments
+	>>> BaseG.integer_validator("name", "12")
+	Traceback (most recent call last):
+	...
+	TypeError: name must be an integer
+
+	>>> BaseG.integer_validator("name", -12)
+	Traceback (most recent call last):
+	...
+	ValueError: name must be greater than 0
+
+	>>> BaseG.integer_validator("name", True)
+	Traceback (most recent call last):
+	...
+	TypeError: name must be an integer
+
+	>>> BaseG.integer_validator("name", 0)
+	Traceback (most recent call last):
+	...
+	ValueError: name must be greater than 0
+
+:: Good @value
+	>>> BaseG.integer_validator("name", 12)
+
+
+:: Argument Count
+	>>> BaseG.integer_validator("name")
+	Traceback (most recent call last):
+	...
+	TypeError: integer_validator() missing 1 required positional argument: 'value'
