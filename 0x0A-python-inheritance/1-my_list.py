@@ -5,7 +5,6 @@
 class MyList(list):
     """A list class that inherits from the list module"""
 
-
     def __init__(self):
         """Initialise the class"""
         super().__init__()
