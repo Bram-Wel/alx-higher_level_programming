@@ -9,7 +9,7 @@ def read_file(filename=""):
         @filename: Name of file to read
     """
     with open(filename, encoding='utf-8') as file:
-        print(file.read())
+        print(file.read(), end='')
 
 
 if __name__ == "__main__":
