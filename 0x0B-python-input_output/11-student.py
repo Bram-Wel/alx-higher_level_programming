@@ -44,6 +44,5 @@ class Student:
         Args:
             json (dict): Dictionary containing new attribute values
         """
-        self.first_name = json['first_name']
-        self.last_name = json['last_name']
-        self.age = json['age']
+        for key, value in json.items():
+            setattr(self, key, value)
