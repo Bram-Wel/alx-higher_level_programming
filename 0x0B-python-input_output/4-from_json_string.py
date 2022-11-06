@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """This module describes a json serialization function."""
 
-import json
 
+import json
 
 def to_json_string(my_obj):
     """Encode an object in json format.
