@@ -1,0 +1,7 @@
+*credentials*
+*test*
+*token*
+*main.py
+*main_*.py
+!*tests/
+!*test_*.py
