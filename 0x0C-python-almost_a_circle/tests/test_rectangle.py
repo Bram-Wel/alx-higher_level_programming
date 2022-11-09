@@ -102,6 +102,19 @@ class RectangleTestCase(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.obj1.area(17)
 
+    def test_update(self):
+        """Test update method."""
+        self.obj3.update(89)
+        self.assertEqual(89, getattr(self.obj3, 'id'))
+        self.obj2.update(89, 12)
+        self.assertEqual(12, getattr(self.obj2, 'width'))
+        self.obj1.update(89, 12, 3)
+        self.assertEqual(3, getattr(self.obj1, 'height'))
+        self.obj3.update(89, 12, 3, 7)
+        self.assertEqual(7, getattr(self.obj3, 'x'))
+        self.obj2.update(89, 12, 3, 7, 9)
+        self.assertEqual(9, getattr(self.obj2, 'y'))
+
 
 class TestRectangle_stdout(unittest.TestCase):
     """Test the __str__ and display() methods of the Rectangle Class."""
@@ -110,8 +123,9 @@ class TestRectangle_stdout(unittest.TestCase):
     def setUpClass(cls):
         """Set up Rectangle instances for the class."""
         cls.obj1 = Rectangle(8, 4)
-        cls.obj2 = Rectangle(8, 4, 2, 4)
-        cls.obj3 = Rectangle(8, 4, 2, 4, 21)
+        cls.obj2 = Rectangle(8, 4, 2)
+        cls.obj3 = Rectangle(8, 4, 2, 4)
+        cls.obj4 = Rectangle(8, 4, 2, 4, 21)
 
     @classmethod
     def tearDownClass(cls):
@@ -119,6 +133,7 @@ class TestRectangle_stdout(unittest.TestCase):
         del cls.obj1
         del cls.obj2
         del cls.obj3
+        del cls.obj4
 
     @staticmethod
     def capture_stdout(rect, method):
@@ -142,5 +157,24 @@ class TestRectangle_stdout(unittest.TestCase):
     def test_str_(self):
         cls = type(self)
         capture = TestRectangle_stdout.capture_stdout(cls.obj1, "print")
-        correct = f"[Rectangle] ({cls.obj1.id}) 0/0 - 4/6\n"
+        correct = f"[Rectangle] ({cls.obj1.id}) 0/0 - 8/4\n"
         self.assertEqual(correct, capture.getvalue())
+        correct = f"[Rectangle] ({cls.obj2.id}) 2/0 - 8/4"
+        self.assertEqual(correct, cls.obj2.__str__())
+        correct = f"[Rectangle] ({cls.obj3.id}) 2/4 - 8/4"
+        self.assertEqual(correct, str(cls.obj3))
+        correct = f"[Rectangle] ({21}) 2/4 - 8/4"
+        self.assertEqual(correct, str(cls.obj4))
+
+    def test_display(self):
+        """Test display."""
+        cls = type(self)
+        capture = cls.capture_stdout(cls.obj1, "display")
+        self.assertEqual("########\n########\n########\n########\n",
+                         capture.getvalue())
+        capture = cls.capture_stdout(cls.obj2, "display")
+        self.assertEqual("  ########\n  ########\n  ########\n  ########\n",
+                         capture.getvalue())
+        capture = cls.capture_stdout(cls.obj3, "display")
+        self.assertEqual("\n\n\n\n  ########\n  ########\n  ########\n"
+                         + "  ########\n", capture.getvalue())

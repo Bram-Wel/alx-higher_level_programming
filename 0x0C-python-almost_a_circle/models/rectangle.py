@@ -136,6 +136,25 @@ class Rectangle(Base):
                 print("#", end='')
             print()
 
+    def update(self, *args):
+        """Update the Rectangle class.
+
+        Args:
+            args[0]: Id
+            args[1]: width
+            args[2]: height
+            args[3]: x
+            args[4]: y
+        """
+        try:
+            self.id = args[0]
+            self.__width = args[1]
+            self.__height = args[2]
+            self.__x = args[3]
+            self.__y = args[4]
+        except IndexError:
+            pass
+
     def __str__(self):
         """Print a string describing the object."""
         return (f"[Rectangle] ({self.id}) {self.__x}/{self.__y}"
