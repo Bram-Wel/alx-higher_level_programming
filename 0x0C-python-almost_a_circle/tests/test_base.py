@@ -16,10 +16,12 @@ class BaseTestCase(unittest.TestCase):
         self.obj2 = Base()
         self.obj3 = Base(17)
 
-    @unittest.skip("")
+    # @unittest.skip("")
     def teardown(self):
         """Destroy instances after test."""
-        pass
+        del self.obj1
+        del self.obj2
+        del self.obj3
 
     def test_init(self):
         """Test initialisation of base object."""
@@ -40,3 +42,11 @@ class BaseTestCase(unittest.TestCase):
         # __nb_instances is a private attribute
         with self.assertRaises(AttributeError):
             print(self.obj3.__nb_instances)
+
+    def test_delete(self):
+        """Test deletion of objects."""
+        del self.obj1
+        with self.assertRaises((NameError, AttributeError)):
+            print(self.obj1)
+        self.obj1 = Base()
+        self.assertEqual(2, self.obj1.id)

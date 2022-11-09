@@ -29,3 +29,11 @@ class Base:
             self.id = Base.__nb_objects
         else:
             self.id = id
+
+    def __del__(self):
+        """Run when the base class is destroyed.
+
+        Reduces the number of initialised instances nb_objects
+        """
+        if(self.id >= 0 or self.id <= Base.__nb_objects):
+            Base.__nb_objects -= 1
