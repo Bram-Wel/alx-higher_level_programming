@@ -35,5 +35,8 @@ class Base:
 
         Reduces the number of initialised instances nb_objects
         """
-        if(self.id >= 0 or self.id <= Base.__nb_objects):
-            Base.__nb_objects -= 1
+        try:
+            if(self.id >= 0 or self.id <= Base.__nb_objects):
+                Base.__nb_objects -= 1
+        except AttributeError:
+            pass

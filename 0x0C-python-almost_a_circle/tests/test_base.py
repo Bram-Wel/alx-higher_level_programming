@@ -17,7 +17,7 @@ class BaseTestCase(unittest.TestCase):
         self.obj3 = Base(17)
 
     # @unittest.skip("")
-    def teardown(self):
+    def tearDown(self):
         """Destroy instances after test."""
         del self.obj1
         del self.obj2

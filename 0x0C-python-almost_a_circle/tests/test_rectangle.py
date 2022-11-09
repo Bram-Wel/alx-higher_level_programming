@@ -3,6 +3,8 @@
 
 
 import unittest
+import io
+import sys
 
 from models.rectangle import Rectangle
 
@@ -17,7 +19,7 @@ class RectangleTestCase(unittest.TestCase):
         self.obj3 = Rectangle(10, 5, 3, 6, 25)
 
     # @unittest.skip("")
-    def teardown(self):
+    def tearDown(self):
         """Destroy Rectangle instances."""
         del self.obj1
         del self.obj2
@@ -72,7 +74,7 @@ class RectangleTestCase(unittest.TestCase):
             setattr(self.obj1, 'x', "String")
             setattr(self.obj2, 'y', ["lists", 12])
             setattr(self.obj3, 'width', ())
-            setattr(self.obj1, 'height', "test")
+            setattr(self.obj1, 'height', 16.04)
 
         # check if width and height are greater than 0
         with self.assertRaises(ValueError):
@@ -95,3 +97,50 @@ class RectangleTestCase(unittest.TestCase):
         self.assertEqual(50, self.obj1.area())
         self.assertEqual(50, self.obj2.area())
         self.assertEqual(50, self.obj3.area())
+
+        # Test extra argument given
+        with self.assertRaises(TypeError):
+            self.obj1.area(17)
+
+
+class TestRectangle_stdout(unittest.TestCase):
+    """Test the __str__ and display() methods of the Rectangle Class."""
+
+    @classmethod
+    def setUpClass(cls):
+        """Set up Rectangle instances for the class."""
+        cls.obj1 = Rectangle(8, 4)
+        cls.obj2 = Rectangle(8, 4, 2, 4)
+        cls.obj3 = Rectangle(8, 4, 2, 4, 21)
+
+    @classmethod
+    def tearDownClass(cls):
+        """Destroy Rectangle instances."""
+        del cls.obj1
+        del cls.obj2
+        del cls.obj3
+
+    @staticmethod
+    def capture_stdout(rect, method):
+        """Capture and return text written to stdout.
+
+        Args:
+            rect (Rectangle): Rectangle printed to stdout
+            method (str): Method to run on the rectangle
+        Return:
+            The text printed to stdout by calling method
+        """
+        capture = io.StringIO()
+        sys.stdout = capture
+        if method == "print":
+            print(rect)
+        else:
+            rect.display()
+        sys.stdout = sys.__stdout__
+        return capture
+
+    def test_str_(self):
+        cls = type(self)
+        capture = TestRectangle_stdout.capture_stdout(cls.obj1, "print")
+        correct = f"[Rectangle] ({cls.obj1.id}) 0/0 - 4/6\n"
+        self.assertEqual(correct, capture.getvalue())
