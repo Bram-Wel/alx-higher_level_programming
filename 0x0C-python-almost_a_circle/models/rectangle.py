@@ -13,6 +13,7 @@ class Rectangle(Base):
     Args:
         Base (Base): Super class; Base
     Attributes:
+        id (int): Id of rectangle object
         width (int): Width of the rectangle
         height (int): Height of the rectangle
         x (int): Position on a cartesian axis; (x, y)
@@ -37,21 +38,41 @@ class Rectangle(Base):
 
     @property
     def width(self):
-        """Width of the rectangle."""
+        """Width of the rectangle.
+
+        Raise:
+            TypeError: If width is not an integer
+            ValueError: If width is less than or equal to 0
+        """
         return self.__width
 
     @width.setter
     def width(self, value):
-        self.__width = value
+        if type(value) != int:
+            raise TypeError("width must be an integer")
+        elif value <= 0:
+            raise ValueError("width must be > 0")
+        else:
+            self.__width = value
 
     @property
     def height(self):
-        """Height of the reactangle."""
+        """Height of the reactangle.
+
+        Raise:
+            TypeError: If height is not an integer
+            ValueError: If height is less than or equal to 0
+        """
         return self.__height
 
     @height.setter
     def height(self, value):
-        self.__height = value
+        if type(value) != int:
+            raise TypeError("height must be an integer")
+        elif value <= 0:
+            raise ValueError("height must be > 0")
+        else:
+            self.__height = value
 
     @property
     def x(self):
@@ -59,18 +80,36 @@ class Rectangle(Base):
 
         Considering the cartesian plane where points are represented on a
         cartesian axis X-Y for 2-D axes.
+        Raise:
+            TypeError: If x is not an integer
+            ValueError: If x is less than 0
         """
         return self.__x
 
     @x.setter
     def x(self, value):
-        self.__x = value
+        if type(value) != int:
+            raise TypeError("x must be an integer")
+        elif value < 0:
+            raise ValueError("x must be >= 0")
+        else:
+            self.__x = value
 
     @property
     def y(self):
-        """Position of the rectangle along the Y axis on cartesian plane."""
+        """Position of the rectangle along the Y axis on cartesian plane.
+
+        Raise:
+            TypeError: If y is not an integer
+            ValueError: If y is less than 0
+        """
         return self.__y
 
     @y.setter
     def y(self, value):
-        self.__y = value
+        if type(value) != int:
+            raise TypeError("y must be an integer")
+        elif value < 0:
+            raise ValueError("y must be >= 0")
+        else:
+            self.__y = value

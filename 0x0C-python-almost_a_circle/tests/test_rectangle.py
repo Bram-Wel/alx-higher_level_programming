@@ -17,7 +17,7 @@ class RectangleTestCase(unittest.TestCase):
         self.obj3 = Rectangle(10, 5, 3, 6, 25)
 
     # @unittest.skip("")
-    def teardown():
+    def teardown(self):
         """Destroy Rectangle instances."""
         del self.obj1
         del self.obj2
@@ -64,3 +64,28 @@ class RectangleTestCase(unittest.TestCase):
             print(self.obj2.__height)
             print(self.obj3.__x)
             print(self.obj2.__y)
+
+    def test_setters(self):
+        """Test that setter conditions are satisfied."""
+        # check if values are integers
+        with self.assertRaises(TypeError):
+            setattr(self.obj1, 'x', "String")
+            setattr(self.obj2, 'y', ["lists", 12])
+            setattr(self.obj3, 'width', ())
+            setattr(self.obj1, 'height', "test")
+
+        # check if width and height are greater than 0
+        with self.assertRaises(ValueError):
+            setattr(self.obj1, 'width', 0)
+            setattr(self.obj2, 'width', -1)
+            setattr(self.obj3, 'height', 0)
+            setattr(self.obj2, 'height', -12)
+
+        # check if x and y are 0 or greater
+        with self.assertRaises(ValueError):
+            setattr(self.obj2, 'x', -1)
+            setattr(self.obj3, 'y', -100)
+        setattr(self.obj1, 'x', 0)
+        self.assertEqual(0, self.obj1.x)
+        setattr(self.obj2, 'y', 0)
+        self.assertEqual(0, self.obj2.y)
