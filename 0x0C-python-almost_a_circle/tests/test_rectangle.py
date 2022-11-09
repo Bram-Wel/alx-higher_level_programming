@@ -58,6 +58,8 @@ class RectangleTestCase(unittest.TestCase):
         """Expected failures."""
         # Check for unset attribute.
         self.assertIn('test_1', dir(self.obj3), msg="test attribute not added")
+        self.obj3.update()
+        self.assertEqual(18239456, getattr(self.obj3, 'id'))
 
     def test_private(self):
         """Test that the attributes are private."""
@@ -114,6 +116,14 @@ class RectangleTestCase(unittest.TestCase):
         self.assertEqual(7, getattr(self.obj3, 'x'))
         self.obj2.update(89, 12, 3, 7, 9)
         self.assertEqual(9, getattr(self.obj2, 'y'))
+        self.obj1.update(height=1)
+        self.assertEqual(1, getattr(self.obj1, 'height'))
+        self.obj2.update(width=6, x=11, y=1, height=2, id=50)
+        self.assertEqual(1, getattr(self.obj2, 'y'))
+        self.assertEqual(6, getattr(self.obj2, 'width'))
+        self.assertEqual(11, getattr(self.obj2, 'x'))
+        self.assertEqual(2, getattr(self.obj2, 'height'))
+        self.assertEqual(50, getattr(self.obj2, 'id'))
 
 
 class TestRectangle_stdout(unittest.TestCase):

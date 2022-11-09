@@ -136,9 +136,10 @@ class Rectangle(Base):
                 print("#", end='')
             print()
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Update the Rectangle class.
 
+        Takes positional & keyword args.
         Args:
             args[0]: Id
             args[1]: width
@@ -146,14 +147,26 @@ class Rectangle(Base):
             args[3]: x
             args[4]: y
         """
-        try:
-            self.id = args[0]
-            self.__width = args[1]
-            self.__height = args[2]
-            self.__x = args[3]
-            self.__y = args[4]
-        except IndexError:
-            pass
+        if args:
+            try:
+                self.id = args[0]
+                self.__width = args[1]
+                self.__height = args[2]
+                self.__x = args[3]
+                self.__y = args[4]
+            except IndexError:
+                pass
+        else:
+            if 'id' in kwargs:
+                self.id = kwargs["id"]
+            if 'width' in kwargs:
+                self.__width = kwargs["width"]
+            if 'height' in kwargs:
+                self.__height = kwargs["height"]
+            if 'x' in kwargs:
+                self.__x = kwargs["x"]
+            if 'y' in kwargs:
+                self.__y = kwargs["y"]
 
     def __str__(self):
         """Print a string describing the object."""
