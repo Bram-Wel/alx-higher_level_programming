@@ -89,3 +89,9 @@ class RectangleTestCase(unittest.TestCase):
         self.assertEqual(0, self.obj1.x)
         setattr(self.obj2, 'y', 0)
         self.assertEqual(0, self.obj2.y)
+
+    def test_area(self):
+        """Test area method."""
+        self.assertEqual(50, self.obj1.area())
+        self.assertEqual(50, self.obj2.area())
+        self.assertEqual(50, self.obj3.area())
