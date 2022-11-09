@@ -37,8 +37,18 @@ class RectangleTestCase(unittest.TestCase):
         self.assertEqual(6, self.obj3.y)
 
         # More than 5 arguments
-        with self.assertRaises(TypeError):
+        with self.assertRaises((TypeError, ValueError)):
             self.obj1 = Rectangle(1, 2, 3, 4, 5, 6)
+            self.obj2 = Rectangle("str", 16)
+            self.obj3 = Rectangle(90, "1000")
+            self.obj1 = Rectangle(1, 2, "3")
+            self.obj2 = Rectangle(1, 2, 3, "4")
+            self.obj3 = Rectangle(-1, 2)
+            self.obj1 = Rectangle(2, -1)
+            self.obj2 = Rectangle(2, 0)
+            self.obj3 = Rectangle(0, 3)
+            self.obj1 = Rectangle(1, 2, -3)
+            self.obj2 = Rectangle(1, 2, 3, -4)
 
     def test_getsetops(self):
         """Test get and set operations."""
