@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+# /usr/bin/python3
 """This module describes the square class."""
 
 from models.rectangle import Rectangle
@@ -40,4 +40,4 @@ class Square(Rectangle):
 
         Print string representation of square object
         """
-        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
+        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.size}"
