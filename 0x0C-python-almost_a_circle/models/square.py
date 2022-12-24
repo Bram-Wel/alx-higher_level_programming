@@ -40,4 +40,4 @@ class Square(Rectangle):
 
         Print string representation of square object
         """
-        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.size}"
+        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
