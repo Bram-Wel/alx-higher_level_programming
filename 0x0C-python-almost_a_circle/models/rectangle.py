@@ -57,7 +57,7 @@ class Rectangle(Base):
 
     @property
     def height(self):
-        """Height of the reactangle.
+        """Height of the rectangle.
 
         Raise:
             TypeError: If height is not an integer
