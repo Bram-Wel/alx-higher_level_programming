@@ -8,6 +8,7 @@ from models.square import Square
 
 TestCase = unittest.TestCase
 
+
 class SquareTestCase(TestCase):
     """Test class for the square package.
 
@@ -21,7 +22,6 @@ class SquareTestCase(TestCase):
         self.obj2 = Square(5, 2)
         self.obj3 = Square(5, 2, 3)
         self.obj4 = Square(5, 2, 3, 24)
-
 
     def teardown(self):
         """Destroy square instances."""
@@ -102,8 +102,6 @@ class SquareTestCase(TestCase):
             self.assertIsNone(self.obj3.y)
             # self.obj4.id = None
             # self.assertIsNone(self.obj4.id)
-
-
         setattr(self.obj1, 'x', 0)
         self.assertEqual(0, self.obj1.x)
         setattr(self.obj1, 'y', 0)
@@ -136,3 +134,13 @@ class SquareTestCase(TestCase):
             self.obj3.update(30, 12, -13)
             self.obj3.update(30, 12, "String")
             self.obj3.update(30, 15, 17, 56, 71)
+
+    def test_dictionary(self):
+        """Test dictionary representation."""
+        dt = self.obj4.to_dictionary()
+        self.assertTrue(type(dt) == dict)
+        self.assertIn('id', dt)
+        self.assertIn('width', dt)
+        self.assertIn('height', dt)
+        self.assertIn('x', dt)
+        self.assertIn('y', dt)

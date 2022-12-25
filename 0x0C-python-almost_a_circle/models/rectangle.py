@@ -174,7 +174,7 @@ class Rectangle(Base):
                 + f" - {self.__width}/{self.__height}")
 
     def to_dictionary(self):
-        """Represent of square instance in dictionary."""
+        """Represent of rectangle instance in dictionary."""
         return {
             'id': self.id,
             'width': self.width,
