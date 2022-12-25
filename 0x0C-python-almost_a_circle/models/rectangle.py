@@ -172,3 +172,13 @@ class Rectangle(Base):
         """Print a string describing the object."""
         return (f"[Rectangle] ({self.id}) {self.__x}/{self.__y}"
                 + f" - {self.__width}/{self.__height}")
+
+    def to_dictionary(self):
+        """Represent of square instance in dictionary."""
+        return {
+            'id': self.id,
+            'width': self.width,
+            'height': self.height,
+            'x': self.x,
+            'y': self.y
+        }

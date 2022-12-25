@@ -186,6 +186,17 @@ class TestRectangle_stdout(unittest.TestCase):
         correct = f"[Rectangle] ({21}) 2/4 - 8/4"
         self.assertEqual(correct, str(cls.obj4))
 
+    def test_dictionary(self):
+        """Test dictionary representation."""
+        cls = type(self)
+        dt = cls.obj4.to_dictionary()
+        self.assertTrue(type(dt) == dict)
+        self.assertIn('id', dt)
+        self.assertIn('width', dt)
+        self.assertIn('height', dt)
+        self.assertIn('x', dt)
+        self.assertIn('y', dt)
+
     def test_display(self):
         """Test display."""
         cls = type(self)
