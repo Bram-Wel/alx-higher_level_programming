@@ -35,6 +35,26 @@ class Square(Rectangle):
         self.width = value
         self.height = value
 
+    def update(self, *args, **kwargs):
+        """Update the square class."""
+        if args:
+            try:
+                self.id = args[0]
+                self.size = args[1]
+                self.x = args[2]
+                self.y = args[3]
+            except IndexError:
+                pass
+        else:
+            if 'id' in kwargs:
+                self.id = kwargs["id"]
+            if 'size' in kwargs:
+                self.size = kwargs["size"]
+            if 'x' in kwargs:
+                self.x = kwargs["x"]
+            if 'y' in kwargs:
+                self.y = kwargs["y"]
+
     def __str__(self):
         """Magic method.
 
