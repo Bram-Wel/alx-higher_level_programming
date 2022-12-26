@@ -56,5 +56,6 @@ class BaseTestCase(unittest.TestCase):
     def test_jsonstring(self):
         """Test json string dump."""
         self.object = Rectangle(1, 2, 3, 4)
+        self.assertTrue(type(self.object.to_json_string(None)) == str)
         dct = self.object.to_dictionary()
         self.assertTrue(type(self.object.to_json_string(dct)) == str)
