@@ -4,6 +4,8 @@
 Python Almost a circle.
 """
 
+import json
+
 
 class Base:
     """A base class to manage some attributes of its subclasses.
@@ -40,3 +42,8 @@ class Base:
                 Base.__nb_objects -= 1
         except AttributeError:
             pass
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """Return json string representing list_dictionaries."""
+        return json.dumps(list_dictionaries)

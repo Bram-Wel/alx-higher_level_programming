@@ -140,7 +140,6 @@ class SquareTestCase(TestCase):
         dt = self.obj4.to_dictionary()
         self.assertTrue(type(dt) == dict)
         self.assertIn('id', dt)
-        self.assertIn('width', dt)
-        self.assertIn('height', dt)
+        self.assertIn('size', dt)
         self.assertIn('x', dt)
         self.assertIn('y', dt)

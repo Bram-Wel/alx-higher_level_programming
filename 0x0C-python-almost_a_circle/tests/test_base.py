@@ -5,6 +5,7 @@
 import unittest
 
 from models.base import Base
+from models.rectangle import Rectangle
 
 
 class BaseTestCase(unittest.TestCase):
@@ -15,6 +16,7 @@ class BaseTestCase(unittest.TestCase):
         self.obj1 = Base()
         self.obj2 = Base()
         self.obj3 = Base(17)
+        self.object = None
 
     # @unittest.skip("")
     def tearDown(self):
@@ -50,3 +52,9 @@ class BaseTestCase(unittest.TestCase):
             print(self.obj1)
         self.obj1 = Base()
         self.assertEqual(2, self.obj1.id)
+
+    def test_jsonstring(self):
+        """Test json string dump."""
+        self.object = Rectangle(1, 2, 3, 4)
+        dct = self.object.to_dictionary()
+        self.assertTrue(type(self.object.to_json_string(dct)) == str)
