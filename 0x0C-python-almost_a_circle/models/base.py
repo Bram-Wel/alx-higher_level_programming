@@ -83,7 +83,7 @@ class Base:
         Args:
             json_string (json): A json representation of objects
         Return:
-            List of objects 
+            List of objects
         """
         if not json_string or json_string == []:
             rt = []
