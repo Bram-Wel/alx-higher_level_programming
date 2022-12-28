@@ -57,7 +57,7 @@ class Base:
         """Write json string to file."""
         filename = cls.__name__ + ".json"
         if list_objs is None or list_objs == []:
-            with open(filename, 'a') as file:
+            with open(filename, 'w+') as file:
                 file.write("[]")
         else:
             obj_list = [obj.to_dictionary() for obj in list_objs]
