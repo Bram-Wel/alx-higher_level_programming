@@ -45,7 +45,14 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """Return json string representing list_dictionaries."""
+        """Return json string representing list_dictionaries.
+
+        Args:
+            list_dictionaries (list): List of dictionaries representing
+            object
+        Return:
+            json string
+        """
         if list_dictionaries is None or list_dictionaries == []:
             rt = "[]"
         else:
@@ -54,7 +61,11 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """Write json string to file."""
+        """Write json string to file.
+
+        Args:
+            list_objs (list): List of objects to serialise
+        """
         filename = cls.__name__ + ".json"
         if list_objs is None or list_objs == []:
             with open(filename, 'w+') as file:
@@ -64,3 +75,18 @@ class Base:
             with open(filename, 'w+') as file:
                 # json.dump(obj_list, file)
                 file.write(cls.to_json_string(obj_list))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """Load objects from json string.
+
+        Args:
+            json_string (json): A json representation of objects
+        Return:
+            List of objects 
+        """
+        if not json_string or json_string == []:
+            rt = []
+        else:
+            rt = json.loads(json_string)
+        return rt
