@@ -48,6 +48,8 @@ class Base:
         """Return json string representing list_dictionaries."""
         if list_dictionaries is None:
             rt = "[]"
+        elif type(list_dictionaries) == list:
+            json.dumps([obj.__dict__ for obj in list_dictionaries])
         else:
             rt = json.dumps(list_dictionaries)
         return rt
