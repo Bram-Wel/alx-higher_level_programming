@@ -40,7 +40,7 @@ class Base:
         try:
             if(self.id >= 0 or self.id <= Base.__nb_objects):
                 Base.__nb_objects -= 1
-        except AttributeError:
+        except ((AttributeError, TypeError)):
             pass
 
     @staticmethod
@@ -68,11 +68,11 @@ class Base:
         """
         filename = cls.__name__ + ".json"
         if list_objs is None or list_objs == []:
-            with open(filename, 'w+') as file:
+            with open(filename, 'w+', encoding="utf-8") as file:
                 file.write("[]")
         else:
             obj_list = [obj.to_dictionary() for obj in list_objs]
-            with open(filename, 'w+') as file:
+            with open(filename, 'w+', encoding="utf-8") as file:
                 # json.dump(obj_list, file)
                 file.write(cls.to_json_string(obj_list))
 
@@ -90,3 +90,33 @@ class Base:
         else:
             rt = json.loads(json_string)
         return rt
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Create an instance from objects dictionaries.
+
+        Args:
+            dictionary (dict): Object dictionary
+        Return:
+            The object instance
+        """
+        if cls.__name__ == "Rectangle":
+            r0 = cls(5, 4, 3, 2)
+        elif cls.__name__ == "Square":
+            r0 = cls(4, 3, 2)
+
+        r0.update(dictionary)
+        return r0
+
+    @classmethod
+    def load_from_file(cls):
+        """Retrieve objects list from a file.
+
+        Return:
+            List of objects
+        """
+        filename = cls.__name__ + ".json"
+        obj_list = []
+        with open(filename, 'r+', encoding="utf-8") as file:
+            obj_list = json.load(file)
+        return obj_list
