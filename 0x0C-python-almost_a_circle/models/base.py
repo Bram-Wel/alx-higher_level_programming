@@ -116,7 +116,6 @@ class Base:
             List of objects
         """
         filename = cls.__name__ + ".json"
-        obj_list = []
         with open(filename, 'r+', encoding="utf-8") as file:
-            obj_list = json.load(file)
-        return obj_list
+            json_string = file.read()
+        return cls.from_json_string(json_string)
