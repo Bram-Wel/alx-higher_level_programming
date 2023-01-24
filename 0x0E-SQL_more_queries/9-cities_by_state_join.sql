@@ -2,4 +2,5 @@
 -- Select all from cities where cities.id = states.id
 SELECT cities.id, cities.name, states.name
         FROM cities, states
-        WHERE states_id = states.id;
+        WHERE state_id = states.id
+        ORDER BY cities.id;
