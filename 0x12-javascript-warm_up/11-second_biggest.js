@@ -11,14 +11,11 @@ function findSecondBiggest (array) {
   let tempB = tempA;
 
   for (const i of array) {
-    if (i > tempA) {
+    if (i >= tempA) {
+      tempB = tempA;
       tempA = i;
     }
-  }
-  for (const i of array) {
-    if (i > tempB && i < tempA) {
-      tempB = i;
-    }
+    if (i < tempA && i >= tempB) tempB = i;
   }
   return tempB;
 }
