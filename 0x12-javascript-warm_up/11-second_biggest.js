@@ -7,7 +7,7 @@ const argv = require('process').argv;
  * largest element from parsed array
  */
 function findSecondBiggest (array) {
-  let tempA = array[0];
+  let tempA = 0;
   let tempB = tempA;
 
   for (const i of array) {
