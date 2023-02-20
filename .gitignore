@@ -5,3 +5,4 @@
 *main_*.py
 !*tests/
 !*test_*.py
+*main*.js
