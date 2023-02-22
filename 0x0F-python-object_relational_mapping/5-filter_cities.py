@@ -21,5 +21,6 @@ if __name__ == "__main__":
             cities.append(row[0])
             row = cursor.fetchone()
         print(', '.join(cities))
+    finally:
         cursor.close()
         db.close()
