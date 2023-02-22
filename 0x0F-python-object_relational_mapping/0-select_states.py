@@ -7,10 +7,9 @@ from sys import argv
 
 if __name__ == "__main__":
     try:
-        db = MySQLdb.connect(host='localhost', user=argv[1], password=argv[2],
-                             database=argv[3])
+        db = MySQLdb.connect(user=argv[1], password=argv[2], database=argv[3])
         cursor = db.cursor()
-        cursor.execute("""SELECT * FROM hbtn_0e_0_usa.states""")
+        cursor.execute(f"""SELECT * FROM {argv[3]}.states ORDER BY id ASC""")
     except MySQLdb.Error as e:
         print(e)
     else:
