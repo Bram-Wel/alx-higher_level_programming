@@ -22,5 +22,9 @@ if __name__ == "__main__":
             row = cursor.fetchone()
         print(', '.join(cities))
     finally:
-        cursor.close()
-        db.close()
+        try:
+            cursor.close()
+        except NameError:
+            pass
+        else:
+            db.close()
