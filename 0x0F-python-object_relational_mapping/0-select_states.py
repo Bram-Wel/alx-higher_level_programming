@@ -11,7 +11,8 @@ if __name__ == "__main__":
         cursor = db.cursor()
         cursor.execute("""SELECT * FROM hbtn_0e_0_usa.states""")
     except MySQLdb.Error as e:
-        print(e)
+        # print(e)
+        pass
     else:
         row = cursor.fetchone()
         while row:
