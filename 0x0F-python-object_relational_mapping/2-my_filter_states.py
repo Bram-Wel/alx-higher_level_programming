@@ -16,7 +16,8 @@ if __name__ == "__main__":
     else:
         row = cursor.fetchone()
         while row:
-            print(row)
+            if row[1].startswith('N'):
+                print(row)
             row = cursor.fetchone()
         cursor.close()
         db.close()
