@@ -2,8 +2,8 @@
 """A City Class that inherits from SQLAlchemy's Base class"""
 
 from sqlalchemy import Column, String, Integer, ForeignKey
-from sqlalchemy.orm import relationship, backref
-from model_state import State, Base
+from sqlalchemy.orm import relationship
+from relationship_state import State, Base
 
 
 class City(Base):
@@ -21,5 +21,4 @@ class City(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(128), nullable=False)
     state_id = Column(Integer, ForeignKey(State.id), nullable=False)
-    state = relationship('State', backref=backref('City', cascade="all,\
-delete-orphan"))
+    state = relationship('State', back_populates='cities')
